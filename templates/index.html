@@ -23,7 +23,7 @@
         <div class="mt-5">
             <div class="card mb-3" v-for="task, index in tasks" :key="index">
                 <div class="card-body row justify-content-between px-4"
-                @dblclick="completeTask(task)" :class ="{'completed': task.completed}">
+                @dblclick="completeTask(task)">
                 <table>
                     <tr>
                         <th>Task</th>
@@ -31,13 +31,13 @@
                     </tr>
                     <tr>
                         <td>
-                            <span v-show="!task.edit">
+                            <span v-show="!task.edit" :class ="{'completed': task.completed}">
                                 {task.title}
                             </span>
                             <input type="text" v-model="task.title" v-show="task.edit">
                         </td>
                         <td>
-                            <span class="card-body mr-50" v-show="!task.edit">
+                            <span class="card-body mr-50" v-show="!task.edit" :class ="{'completed': task.completed}">
                                 {task.timeline}
                             </span>
                             <input type="text" v-model="task.timeline" v-show="task.edit">   
