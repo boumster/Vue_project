@@ -20,11 +20,12 @@
 
         <div class="mt-5">
             <div class="card mb-3" v-for="task, index in tasks" :key="index">
-                <div class="card-body row justify-content-between px-4">
+                <div class="card-body row justify-content-between px-4"
+                @dblclick="completeTask(task)" :class ="{'completed': task.completed}">
                     
                     { task.title }
 
-                    <button type="submit" class="btn-close">
+                    <button type="submit" class="btn-close" @click="deleteTask(task)">
                     </button>
              </div>
             </div>
