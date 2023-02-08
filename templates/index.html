@@ -10,7 +10,11 @@
             <div class="form-group row">
                 <div class="col-9">
                     <label for="">Create new task</label>
-                    <input type="text" class="form-control" v-model="task.title">
+                    <input type="text" class="form-control" v-model="task.title" placeholder="Task name">
+                </div>
+                <div class="col-9 mb-3">
+                    <label for="">Timeline</label>
+                    <input type="text" class="form-control" v-model="task.timeline" placeholder="None">
                 </div>
                 <div class="col-auto mt-auto">
                     <button class="btn btn-success">Create</button>
@@ -23,7 +27,7 @@
                 <div class="card-body row justify-content-between px-4"
                 @dblclick="completeTask(task)" :class ="{'completed': task.completed}">
                     
-                    { task.title }
+                    { task.title } | due: { task.timeline }
 
                     <button type="submit" class="btn-close" @click="deleteTask(task)">
                     </button>

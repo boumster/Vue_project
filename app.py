@@ -35,7 +35,7 @@ def create_task():
     form = TaskForm(data=user_input)
 
     if form.validate():
-        task = models.Task(title=form.title.data)
+        task = models.Task(title=form.title.data, timeline=form.timeline.data)
 
         db.session.add(task)
         db.session.commit()

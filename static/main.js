@@ -5,7 +5,8 @@ const TaskApp = {
     data(){
         return{
             task: {
-                'title': ''
+                'title': '',
+                'timeline': ''
             },
             tasks: []
         }
@@ -47,6 +48,7 @@ const TaskApp = {
             await this.getTasks()
       
             this.task.title = ''
+            this.task.timeline = ''
           },
 
           async deleteTask(task){
