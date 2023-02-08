@@ -84,7 +84,9 @@ def save_task():
 
     task.title = task_newname
     task.timeline = task_newtimeline
-
+    if task_newtimeline == '':
+        task.timeline = 'None'
+        
     db.session.add(task)
     db.session.commit()
     
