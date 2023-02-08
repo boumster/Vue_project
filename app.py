@@ -74,6 +74,21 @@ def complete_task():
 
     return jsonify({'results': 'Ok'}), 200
 
+@app.route('/save', methods=['POST'])
+def save_task():
+    
+    task_id = request.get_json().get('id')
+    task_newname = request.get_json().get('title')
+    task_newtimeline = request.get_json().get('timeline')
+    task = models.Task.query.filter_by(id=task_id).first()
+
+    task.title = task_newname
+    task.timeline = task_newtimeline
+
+    db.session.add(task)
+    db.session.commit()
+    
+    return jsonify({'results': 'Ok'}), 200
 
 
 if __name__ == '__main__':

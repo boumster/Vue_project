@@ -6,7 +6,8 @@ const TaskApp = {
         return{
             task: {
                 'title': '',
-                'timeline': ''
+                'timeline': '',
+                'edit': false
             },
             tasks: []
         }
@@ -63,6 +64,25 @@ const TaskApp = {
             await this.sendRequest(window.location + 'complete', 'post', JSON.stringify(task))
 
             await this.getTasks()
+          },
+
+          async editTask(task){
+            this.original_task =  Object.assign({}, task);
+            task.edit = true;
+
+          },
+
+          async cancelTask(task){
+            Object.assign(task, this.original_task)
+            task.edit = false
+          },
+
+          async saveTask(task){
+
+            await this.sendRequest(window.location + 'save', 'post', JSON.stringify(task))
+
+            await this.getTasks()
+
           }
 
 
